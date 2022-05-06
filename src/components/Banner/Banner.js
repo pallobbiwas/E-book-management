@@ -1,10 +1,15 @@
+import { signOut } from "firebase/auth";
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
 import logo from "../../image/logo.png";
 import "./Banner.css";
 
 const Banner = () => {
   const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+  const image = user?.photoURL;
 
   const loginClick = () => {
     navigate("/login");
@@ -31,9 +36,21 @@ const Banner = () => {
           </div>
         </div>
         <div className="ms-auto">
-          <button onClick={loginClick} className="login-btn">
-            Login
-          </button>
+          {user?.photoURL ? (
+            <img className="user-img" src={image} alt="" />
+          ) : (
+            ""
+          )}
+
+          {user ? (
+            <button onClick={() => signOut(auth)} className="login-btn ms-3">
+              SignOut
+            </button>
+          ) : (
+            <button onClick={loginClick} className="login-btn ms-3">
+              Login
+            </button>
+          )}
         </div>
       </div>
     </div>
