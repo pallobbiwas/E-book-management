@@ -1,0 +1,20 @@
+.parent-containe {
+  display: flex;
+}
+.left,
+.right {
+  width: 400px;
+  height: 2px;
+  background-color: white;
+}
+.google-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.input-w {
+  width: 50%;
+  padding-left: 5px;
+  font-size: 15px;
+  height: 40px;
+}

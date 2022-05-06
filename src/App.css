@@ -1,5 +1,17 @@
 .App {
   text-align: center;
+  height: 100%;
+  background-color: #011742;
+}
+.bg-header {
+  background-color: lightslategrey;
+  position: sticky;
+}
+.header-w {
+  width: 300px;
+}
+.body-w {
+  width: 100%;
 }
 
 .App-logo {
