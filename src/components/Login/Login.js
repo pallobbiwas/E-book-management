@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
+  useAuthState,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import auth from "../../firebase.init";
 import google from "../../image/google.png";
 import "./Login.css";
 
 const Login = () => {
-  const [signInWithEmailAndPassword, user, loading, error] =
+  let errorElemet;
+
+  const [user] = useAuthState(auth);
+
+  const emailRef = useRef()
+
+  const [signInWithEmailAndPassword, emaiUser, loading, emailError] =
     useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail, sending, error] =
+    useSendPasswordResetEmail(auth);
 
   const navigated = useNavigate();
 
@@ -23,15 +35,27 @@ const Login = () => {
     const email = data.email;
     const pass = data.password;
     signInWithEmailAndPassword(email, pass);
-    navigated("/home");
+    // navigated("/home");
   };
 
   //googel login
 
   const googleLoginBtn = () => {
     signInWithGoogle();
-    navigated("/home");
+    // navigated("/home");
   };
+
+  //forget password
+
+
+  if (emailError || googleError) {
+    errorElemet = <p className="text-danger">{emailError?.message}</p>;
+  }
+
+  if (emaiUser || googleUser) {
+    Swal.fire("Login success");
+    navigated("/home");
+  }
 
   return (
     <div>
@@ -43,11 +67,14 @@ const Login = () => {
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
+            ref={emailRef}
+            placeholder="user enail"
             className=" input-w"
             {...register("email", { required: true })}
           />
           <br />
           <input
+            placeholder="user password"
             className="my-3 input-w"
             type="password"
             {...register("password", { required: true })}
@@ -55,8 +82,8 @@ const Login = () => {
           <br />
           <input className="rounded-3 px-4 my-1" type="submit" value="Login" />
         </form>
+        {errorElemet}
         <div className="my-3">
-          <span className="me-5 forget-button">forget password ?</span>
           <Link className="ms-5" to="/ragister">
             <small style={{ textDecoration: "underline", color: "orange" }}>
               new to here ?
