@@ -10,6 +10,7 @@ import Login from "./components/Login/Login";
 import ManageProducts from "./components/ManageProducts/ManageProducts";
 import Products from "./components/Products/Products";
 import Ragister from "./components/Ragister/Ragister";
+import UpdateIteam from "./components/UpdateIteam/UpdateIteam";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/manageproducts" element={<ManageProducts />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/ragister" element={<Ragister />}></Route>
+            <Route path="updateuser/:id" element={<UpdateIteam />}></Route>
           </Routes>
         </div>
       </div>

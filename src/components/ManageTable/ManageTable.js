@@ -1,34 +1,49 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import useProsucts from "../../hooks/useProsucts";
 import "./ManageTable.css";
 
-const ManageTable = ({ products }) => {
-  //dele
-  const deleteProduct = () => {
-    console.log("delete");
+const ManageTable = ({ product }) => {
+  const [products, setProducts] = useProsucts();
+  //delet
+  const deleteProduct = (id) => {
+    const confurmd = window.confirm("are you sure");
+
+    if (confurmd) {
+      const url = `http://localhost:5000/books/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          const remainData = products.filter((c) => c._id !== id);
+          setProducts(remainData);
+          console.log(remainData);
+        });
+    }
   };
 
   //update
-
-  const updateProduct = () => {
-    console.log("update");
-  };
 
   return (
     <div className="container-fluid">
       <Table striped bordered hover variant="dark">
         <tbody>
           <tr className="">
-            <td className="">{products.name}</td>
+            <td className="w-50">{product.name}</td>
             <td>
-              <img className="manage-img img-fluid" src={products.img} alt="" />
+              <img className="manage-img img-fluid" src={product.img} alt="" />
             </td>
-            <td>
-              <button onClick={deleteProduct} className="btn btn-danger me-2">
+            <td className="w-25">
+              <button
+                onClick={() => deleteProduct(product._id)}
+                className="btn btn-danger me-2"
+              >
                 Delete
               </button>
-              <button onClick={updateProduct} className="btn btn-warning">
-                Edit
+              <button className="btn btn-warning">
+                <Link to={`/updateuser/${product._id}`}>Edit</Link>
               </button>
             </td>
           </tr>

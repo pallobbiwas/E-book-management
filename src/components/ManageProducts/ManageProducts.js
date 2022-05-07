@@ -16,13 +16,13 @@ const ManageProducts = () => {
   return (
     <div>
       <h1 className="mb-5">
-        <span className="text-info">All products here </span>!{" "}
-        <span className="text-warning">you can manage</span>
+        <span className="text-info">All products here </span>{" "}
+        <span className="text-warning">you can manage.. !</span>
         <hr />
       </h1>
       <div>
         {products.map((p) => (
-          <ManageTable key={p._id} products={p}></ManageTable>
+          <ManageTable key={p._id} product={p}></ManageTable>
         ))}
       </div>
     </div>
