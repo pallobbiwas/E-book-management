@@ -32,13 +32,19 @@ const Addproduct = () => {
           <input
             placeholder="book name"
             className="mt-2 w-50"
-            {...register("bookname")}
+            {...register("name")}
           />
           <br />
           <input
             placeholder="seller name"
             className="mt-2 w-50"
-            {...register("Seller", { required: true })}
+            {...register("seller", { required: true })}
+          />
+          <br />
+          <input
+            placeholder="discription"
+            className="mt-2 w-50"
+            {...register("discription", { required: true })}
           />
           <br />
           <input
@@ -59,7 +65,7 @@ const Addproduct = () => {
             placeholder="image url"
             className="mt-2 mb-4 w-50"
             type="text"
-            {...register("imgUrl", { required: true })}
+            {...register("img", { required: true })}
           />
           <br />
           <input type="submit" />
