@@ -10,7 +10,7 @@ const OrderPage = () => {
   //https://glacial-earth-74084.herokuapp.com
 
   useEffect(() => {
-    const url = `http://localhost:5000/books/${id}`;
+    const url = `https://glacial-earth-74084.herokuapp.com/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => seProduct(data));
@@ -19,7 +19,10 @@ const OrderPage = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (datas) => {
-    const { data } = await axios.post("http://localhost:5000/order", datas);
+    const { data } = await axios.post(
+      "https://glacial-earth-74084.herokuapp.com/order",
+      datas
+    );
     Swal.fire({
       icon: "success",
       text: "order successfull..!",

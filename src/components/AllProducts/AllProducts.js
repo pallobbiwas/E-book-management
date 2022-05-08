@@ -25,7 +25,7 @@ const AllProducts = () => {
             <p>
               {p.discription > 100
                 ? p.discription
-                : p.discription.slice(0, 100) + "..."}
+                : p.discription?.slice(0, 100) + "..."}
             </p>
             <p>Seller: {p.seller}</p>
             <button
