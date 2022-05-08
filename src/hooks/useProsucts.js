@@ -5,7 +5,7 @@ const useProsucts = () => {
     const [products, setProducts] = useState()
     useEffect(() => {
         (async () => {
-          const { data } = await axios.get("http://localhost:5000/books");
+          const { data } = await axios.get("https://glacial-earth-74084.herokuapp.com/books");
           setProducts(data.data);
         })();
 

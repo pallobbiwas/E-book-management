@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateIteam = () => {
   const { id } = useParams();
@@ -8,7 +9,7 @@ const UpdateIteam = () => {
   const [product, seProduct] = useState({});
 
   useEffect(() => {
-    const url = `http://localhost:5000/books/${id}`;
+    const url = `https://glacial-earth-74084.herokuapp.com/books/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => seProduct(data));
@@ -19,7 +20,7 @@ const UpdateIteam = () => {
 
   const onSubmit = async (datas) => {
       console.log(datas);
-    const url = `http://localhost:5000/books/${id}`;
+    const url = `https://glacial-earth-74084.herokuapp.com/books/${id}`;
     fetch(url, {
       method: "PUT", // or 'PUT'
       headers: {
@@ -30,7 +31,11 @@ const UpdateIteam = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("Success:", data);
-        alert("added sucessful");
+        Swal.fire({
+            icon: "success",
+            title: "Thank you",
+            text: `${data.message}...!`,
+          });
       });
   };
   return (
@@ -39,7 +44,7 @@ const UpdateIteam = () => {
         Edit for :- <span className="text-warning">{product.name}</span>
       </h3>
       <hr />
-      <div className="my-4 p-3 bg-warning rounded-3 w-50 mx-auto">
+      <div className="my-4 p-3 bg-warning rounded-3 input-width">
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             placeholder="book name"

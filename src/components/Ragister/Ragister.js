@@ -28,7 +28,7 @@ const Ragister = () => {
         <span className="text-warning">here</span>
       </h1>
       <hr />
-      <div className="w-50 bg-warning rounded-3 mx-auto p-3 mt-5">
+      <div className="login-width bg-warning rounded-3 p-3 mt-5">
         <form onSubmit={handleSubmit(onSubmit)}>
           <input
             placeholder="user name"

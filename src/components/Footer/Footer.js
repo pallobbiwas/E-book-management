@@ -11,7 +11,7 @@ const Footer = () => {
   return (
     <div className="py-5">
       <div className="container-fluid text-white">
-        <div className="row">
+        <div className="row g-4">
           <div className="col-md-4 text-start">
             <p>
               <FontAwesomeIcon

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HereAllProducts = ({ products }) => {
   return (
@@ -11,7 +12,9 @@ const HereAllProducts = ({ products }) => {
         </h5>
         <p>
           {products.discription > 100
-            ? (products.discription ? products.discription:'no discription')
+            ? products.discription
+              ? products.discription
+              : "no discription"
             : products?.discription?.slice(0, 100) + "..."}
         </p>
         <p>Seller: {products.seller}</p>
@@ -24,6 +27,11 @@ const HereAllProducts = ({ products }) => {
         >
           Price: {products.price}
         </button>
+        <div className="mt-4">
+          <button className="btn btn-warning w-100 fs-4 fw-bolder">
+            <Link to={`/order/${products._id}`}>Order now</Link>
+          </button>
+        </div>
       </div>
     </div>
   );

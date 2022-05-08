@@ -65,7 +65,7 @@ const Login = () => {
       </h1>
       <hr />
       <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className="input-width" onSubmit={handleSubmit(onSubmit)}>
           <input
             ref={emailRef}
             placeholder="user enail"
@@ -98,7 +98,7 @@ const Login = () => {
           <div className="right"></div>
         </div>
         <div className="mt-4">
-          <button onClick={googleLoginBtn} className="px-4 py-1 rounded-3">
+          <button onClick={googleLoginBtn} className="w-100 px-4 py-1 rounded-3">
             <img className="google-icon" src={google} alt="" /> Google login
           </button>
         </div>

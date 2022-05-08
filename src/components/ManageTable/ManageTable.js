@@ -11,7 +11,7 @@ const ManageTable = ({ product }) => {
     const confurmd = window.confirm("are you sure");
 
     if (confurmd) {
-      const url = `http://localhost:5000/books/${id}`;
+      const url = `https://glacial-earth-74084.herokuapp.com/books/${id}`;
       fetch(url, {
         method: "DELETE",
       })

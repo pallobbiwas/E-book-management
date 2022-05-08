@@ -9,14 +9,14 @@ const Products = () => {
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get(`http://localhost:5000/books?page=${page}&size=6`);
+      const { data } = await axios.get(`https://glacial-earth-74084.herokuapp.com/books?page=${page}&size=6`);
       setProducts(data.data);
     })();
   }, [page]);
 
   useEffect(() => {
     (async () => {
-      const { data } = await axios.get("http://localhost:5000/productCount");
+      const { data } = await axios.get("https://glacial-earth-74084.herokuapp.com/productCount");
       const count = data.count;
       const page = Math.ceil(count / 6);
       setPagecount(page);

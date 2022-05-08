@@ -1,9 +1,42 @@
 .nav-container {
+  display: flex;
+  flex-direction: column;
   position: sticky;
   top: 0;
+  text-align: left;
 }
 a {
   text-decoration: none;
   color: white;
   font-size: 20px;
+}
+
+.nav-container a {
+  text-align: center;
+  background-color: lightcyan;
+  margin-bottom: 5px;
+  width: 100%;
+  color: black;
+  border-radius: 10px;
+}
+
+.nav-container a:hover {
+  background-color: orange;
+  transition: 1s;
+}
+
+@media only screen and (max-width: 992px) {
+  .nav-container a {
+    text-align: center;
+    background-color: lightcyan;
+    margin-bottom: 5px;
+    width: 100%;
+    color: black;
+    border-radius: 10px;
+  }
+
+  .nav-container a:hover {
+    background-color: orange;
+    transition: 1s;
+  }
 }
